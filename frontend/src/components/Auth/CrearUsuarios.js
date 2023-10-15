@@ -2,33 +2,54 @@ import React, {useState} from "react";
 
 export const CrearUsuarios = () =>
 {
-    const [nombreCompañia, setCompañia] = useState('');
-    const [razonSocial, setRazon] = useState('');
-    const [nit, setNit] = useState('');
-    const [actividadComercial, setComercial] = useState('');
-    const[nombre, setNombre] = useState('');
-    const [tipoDocumento, setTipoDocumento] = useState('');
-    const [numeroDocumento, setNumeroDocumento] = useState('');
-    const [numeroContacto, setNumeroContacto] = useState('');
-    const [correoEmpresarial, setCorreoEmpresarial] = useState('')
-    const [nombreEspecialista, setNombreEspecialista] = useState('');
-    const [tipoEspecialista, setTipoEspecialista] = useState('');
-    const [tipoDocumentoEspecialista, setTipoDocumentoEspecialista] = useState('');
-    const [numeroDocumentoEspecialista, setNumeroDocumentoEspecialista] = useState('');
-    const [valorSalarial, setValorSalarial] = useState('');
-    const [nombreOperador, setNombreOperador] = useState('');
-    const [tipoOperador, setTipoOperador] = useState('');
-    const [tipoDocumentoOperador, setTipoDocumentoOperador] = useState('');
-    const [numeroDocumentoOperador, setNumeroDocumentoOperador] = useState('');
-    const [valorSalarialOperador, setValorSalarialOperador] = useState('');
+  
+   const[formEmpresa, setFormEmpresa] = useState({})
+   const handleChangeEmpresa = (e) =>
+   {
+    setFormEmpresa(
+      {
+      ...formEmpresa, [e.target.name]:e.target.value,
+     
+    });
+   };
+   const[formRepresentante, setFormRepresentante] = useState({})
+   const handleChangeRepresentante = (e) =>
+   {
+    setFormRepresentante(
+      {
+      ...formRepresentante, [e.target.name]:e.target.value,
+     
+    
+    });
+   };
+   const[formEspecialista, setFormEspecialista] = useState({})
+   const handleChangeEspecialista = (e) =>
+   {
+    setFormEspecialista(
+      {
+      ...formEspecialista, [e.target.name]:e.target.value,
+     
+    
+    });
+   };
+   const[formOperador, setFormOperador]= useState({})
+   const handleChangeOperador = (e) =>
+   {
+    setFormOperador(
+      {
+      ...formOperador, [e.target.name]:e.target.value,
+     
+    
+    });
+   };
     const handleSubmit = (e) => {
         e.preventDefault();
-        // Aquí puedes procesar los datos del formulario, por ejemplo, enviarlos a un servidor.
-        console.log('Datos del formulario:', { nombreCompañia, razonSocial, nit, actividadComercial, 
-          nombre, tipoDocumento, numeroDocumento, numeroContacto, correoEmpresarial, 
-          nombreEspecialista, tipoEspecialista, tipoDocumentoEspecialista, numeroDocumentoEspecialista, valorSalarial, 
-          nombreOperador, tipoOperador, tipoDocumentoOperador, numeroDocumentoOperador, valorSalarialOperador});
+        alert("El Usuario ha sido creado")
+     
       };
+      
+       
+      
     return(
         <div className="contenedor-formulario">
         <h2>Portal de Creacion de Usuario</h2>
@@ -40,8 +61,8 @@ export const CrearUsuarios = () =>
             <input
               type="text"
               id="nombreCompañia"
-              value={nombreCompañia}
-              onChange={(e) => setCompañia(e.target.value)}
+              value={formEmpresa.nombreCompañia}
+              onChange={handleChangeEmpresa}
               required
             />
           </div>
@@ -50,8 +71,8 @@ export const CrearUsuarios = () =>
             <input
             text="text"
               id="razonSocial"
-              value={razonSocial}
-              onChange={(e) => setRazon(e.target.value)}
+              value={formEmpresa.razonSocial}
+              onChange={handleChangeEmpresa}
               required
             >
             </input>
@@ -59,10 +80,10 @@ export const CrearUsuarios = () =>
           <div className="nit">
             <label htmlFor="nit">Nit:</label>
             <input
-              type="number"
+              type="text"
               id="nit"
-              value={nit}
-              onChange={(e) => setNit(e.target.value)}
+              value={formEmpresa.nit}
+              onChange={handleChangeEmpresa}
               required
             />
           </div>
@@ -71,8 +92,8 @@ export const CrearUsuarios = () =>
             <input
               type="text"
               id="actividadComercial"
-              value={actividadComercial}
-              onChange={(e) => setComercial(e.target.value)}
+              value={formEmpresa.actividadComercial}
+              onChange={handleChangeEmpresa}
               required
             />
           </div>
@@ -87,8 +108,8 @@ export const CrearUsuarios = () =>
             <input
               type="text"
               id="nombre"
-              value={nombre}
-              onChange={(e) => setNombre(e.target.value)}
+              value={formRepresentante.nombre}
+              onChange={handleChangeRepresentante}
               required
             />
           </div>
@@ -96,8 +117,8 @@ export const CrearUsuarios = () =>
             <label htmlFor="tipoDocumento">Tipo de Documento:</label>
             <select
               id="tipoDocumento"
-              value={tipoDocumento}
-              onChange={(e) => setTipoDocumento(e.target.value)}
+              value={formRepresentante.tipoDocumento}
+              onChange={handleChangeRepresentante}
               required
             >
               <option value="">Selecciona un tipo</option>
@@ -112,8 +133,8 @@ export const CrearUsuarios = () =>
             <input
               type="text"
               id="numeroDocumento"
-              value={numeroDocumento}
-              onChange={(e) => setNumeroDocumento(e.target.value)}
+              value={formRepresentante.numeroDocumento}
+              onChange={handleChangeRepresentante}
               required
             />
           </div>
@@ -122,8 +143,8 @@ export const CrearUsuarios = () =>
             <input
               type="text"
               id="numeroContacto"
-              value={numeroContacto}
-              onChange={(e) => setNumeroContacto(e.target.value)}
+              value={formRepresentante.numeroContacto}
+              onChange={handleChangeRepresentante}
               required
             />
           </div>
@@ -132,8 +153,8 @@ export const CrearUsuarios = () =>
             <input
               type="email"
               id="correoEmpresarial"
-              value={correoEmpresarial}
-              onChange={(e) => setCorreoEmpresarial(e.target.value)}
+              value={formRepresentante.correoEmpresarial}
+              onChange={handleChangeRepresentante}
               required
             />
           </div>
@@ -142,14 +163,14 @@ export const CrearUsuarios = () =>
         </div>
         <div className="formulario-especialista">
         <h3>Informacion del especialista</h3>
-        <form onSubmit={handleSubmit}>
+        <form onSubmit={handleSubmit}> 
           <div className="nombre-especialista">
             <label htmlFor="nombreEspecialista">Nombre de la Compañia:</label>
             <input
               type="text"
               id="nombreEspecialista" 
-              value={nombreEspecialista}
-              onChange={(e) => setNombreEspecialista(e.target.value)}
+              value={formEspecialista.nombreEspecialista}
+              onChange={handleChangeEspecialista}
               required
             />
           </div>
@@ -158,18 +179,18 @@ export const CrearUsuarios = () =>
             <input
             text="text"
               id="tipoEspecialista"
-              value={tipoEspecialista}
-              onChange={(e) => setTipoEspecialista(e.target.value)}
+              value={formEspecialista.tipoEspecialista}
+              onChange={handleChangeEspecialista}
               required
             >
             </input>
           </div>
-          <div className="tipo-documento-operador"> 
+          <div className="tipo-documento-especialista"> 
             <label htmlFor="tipoDocumentoOperador">Tipo de Documento:</label>
             <select
               id="tipoDocumentoOperador"
-              value={tipoDocumentoOperador}
-              onChange={(e) => setTipoDocumentoOperador(e.target.value)}
+              value={formEspecialista.tipoDocumentoOperador}
+              onChange={handleChangeEspecialista}
               required
             >
               <option value="">Selecciona un tipo</option>
@@ -182,20 +203,20 @@ export const CrearUsuarios = () =>
           <div className="numero-documento-especialista"> 
             <label htmlFor="numeroDocumentoEspecialista">N° de Documento:</label>
             <input
-              type="number"
+              type="text"
               id="numeroDocumentoEspecialista"
-              value={numeroDocumentoEspecialista}
-              onChange={(e) => setNumeroDocumentoEspecialista(e.target.value)}
+              value={formEspecialista.numeroDocumentoEspecialista}
+              onChange={handleChangeEspecialista}
               required
             />
           </div>
           <div className="valor-salarial">
             <label htmlFor="valorSalarial">Valor Salarial x Hora:</label>
             <input
-              type="number"
+              type="text"
               id="valorSalarial"
-              value={valorSalarial}
-              onChange={(e) => setValorSalarial(e.target.value)}
+              value={formEspecialista.valorSalarial}
+              onChange={handleChangeEspecialista}
               required
             />
           </div>
@@ -210,8 +231,8 @@ export const CrearUsuarios = () =>
             <input
               type="text"
               id="nombreOperador" 
-              value={nombreOperador}
-              onChange={(e) => setNombreOperador(e.target.value)}
+              value={formOperador.nombreOperador}
+              onChange={handleChangeOperador}
               required
             />
           </div>
@@ -220,18 +241,18 @@ export const CrearUsuarios = () =>
             <input
             text="text"
               id="tipoOperador"
-              value={tipoOperador}
-              onChange={(e) => setTipoOperador(e.target.value)}
+              value={formOperador.tipoOperador}
+              onChange={handleChangeOperador}
               required
             >
             </input>
           </div>
-          <div className="tipo-documento-especialista"> 
-            <label htmlFor="tipoDocumentoEspecialista">Tipo de Documento:</label>
+          <div className="tipo-documento-operador"> 
+            <label htmlFor="tipoDocumentoOperador">Tipo de Documento:</label>
             <select
-              id="tipoDocumentoEspecialista"
-              value={tipoDocumentoEspecialista}
-              onChange={(e) => setTipoDocumentoEspecialista(e.target.value)}
+              id="tipoDocumentoOperador"
+              value={formOperador.tipoDocumentoOperador}
+              onChange={handleChangeOperador}
               required
             >
               <option value="">Selecciona un tipo</option>
@@ -244,20 +265,20 @@ export const CrearUsuarios = () =>
           <div className="numero-documento-operador"> , 
             <label htmlFor="numeroDocumentoOperador">N° de Documento:</label>
             <input
-              type="number"
+              type="text"
               id="numeroDocumentoOperador"
-              value={numeroDocumentoOperador}
-              onChange={(e) => setNumeroDocumentoOperador(e.target.value)}
+              value={formOperador.numeroDocumentoOperador}
+              onChange={handleChangeOperador}
               required
             />
           </div>
           <div className="valor-salarial-operador"> , 
             <label htmlFor="valorSalarialOperador">Valor Salarial x Hora:</label>
             <input
-              type="number"
+              type="text"
               id="valorSalarialOperador"
-              value={valorSalarialOperador}
-              onChange={(e) => setValorSalarialOperador(e.target.value)}
+              value={formOperador.valorSalarialOperador}
+              onChange={handleChangeOperador}
               required
             />
           </div>
