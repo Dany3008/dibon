@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import {PaginaPrincipal} from './PaginaPrincipal'
 import '../css/Login.css';
 import '../css/normalize.css';
 
@@ -54,7 +55,7 @@ export const Login = () => {
         <input type="submit"  className="boton-ingresar" value="Ingresar" onClick={ingresar}/>
         </div>
     </form>
-
+{ milogin === "true" && <PaginaPrincipal/>}
 </div>
 </div>
   )
