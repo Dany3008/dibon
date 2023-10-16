@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
-import {PaginaPrincipal} from './PaginaPrincipal'
-import '../css/Login.css';
-import '../css/normalize.css';
+import {PaginaPrincipal} from '../../PaginaPrincipal'
+import '../../css/Login.css'
+import '../../css/normalize.css'
 
 export const Login = () => {
   const [milogin, setMiLogin] = useState("false");
