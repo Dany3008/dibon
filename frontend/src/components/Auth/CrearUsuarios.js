@@ -1,8 +1,8 @@
 import React, {useState} from "react";
 
-export const CrearUsuarios = () =>
+export const CrearUsuarios = (onUsuarioCreado) =>
 {
-  
+  const [formData, setFormData] = useState({});
    const[formEmpresa, setFormEmpresa] = useState({})
    const handleChangeEmpresa = (e) =>
    {
@@ -45,7 +45,7 @@ export const CrearUsuarios = () =>
     const handleSubmit = (e) => {
         e.preventDefault();
         alert("El Usuario ha sido creado")
-     
+        onUsuarioCreado(formData);
       };
       
        
@@ -97,7 +97,6 @@ export const CrearUsuarios = () =>
               required
             />
           </div>
-          <button className="boton-compañia" type="submit">Crear Compañia</button>
         </form>
         </div>
         <div className="formulario-representante">
@@ -158,7 +157,6 @@ export const CrearUsuarios = () =>
               required
             />
           </div>
-          <button className="boton-representante" type="submit">Crear Representante Legal</button>
         </form>
         </div>
         <div className="formulario-especialista">
@@ -220,7 +218,6 @@ export const CrearUsuarios = () =>
               required
             />
           </div>
-          <button className="boton-especialista" type="submit">Crear Especialista</button>
         </form>
         </div>
         <div className="formulario-operador"> 
@@ -282,10 +279,9 @@ export const CrearUsuarios = () =>
               required
             />
           </div>
-          <button className="boton-operador" type="submit">Crear Operador</button>
         </form>
-        <button className="boton-guardar" type="submit">Guardar Usuario</button>
         </div>
+        <button className="boton-guardar" type="submit"onClick={handleSubmit }>Guardar Usuario</button>
       </div>
     )
 }
