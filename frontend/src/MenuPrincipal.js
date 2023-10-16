@@ -1,7 +1,7 @@
 import React from "react";
 import {NavLink } from "react-router-dom";
 import {PaginaPrincipal} from './PaginaPrincipal'
-import {GestionUsuarios} from './Usuarios/GestionUsuarios'
+import {GestionUsuarios} from './components/Usuarios/GestionUsuarios'
 
 
 
@@ -17,7 +17,7 @@ export const MenuPrincipal=(props)=>
     }
     return (
    
-        <div className="contenedor-menu">
+        <div className="contenedor-menu" id="caja_menu">
             <div className="opciones-menu">
             <ul>
                 <li>
