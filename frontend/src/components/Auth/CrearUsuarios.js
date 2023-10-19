@@ -2,8 +2,52 @@ import React, {useState} from "react";
 
 export const CrearUsuarios = (onUsuarioCreado) =>
 {
-  const [formData, setFormData] = useState({});
-   const[formEmpresa, setFormEmpresa] = useState({})
+ const obtenerRegistroEmpresa = () =>
+ {
+  var datosEmpresa = localStorage.getItem("formEmpresa")
+  if(datosEmpresa)
+  {
+    return JSON.parse(datosEmpresa);
+    
+      } else{
+        return[];
+    }
+  }
+  const obtenerRegistroRepresentante = () =>
+  {
+   var datosRepresentante = localStorage.getItem("formRepresentante")
+   if(datosRepresentante)
+   {
+     return JSON.parse(datosRepresentante);
+     
+       } else{
+         return[];
+     }
+   }
+   const obtenerRegistroEspecialista = () =>
+  {
+   var datosEspecialista = localStorage.getItem("formEspecialista")
+   if(datosEspecialista)
+   {
+     return JSON.parse(datosEspecialista);
+     
+       } else{
+         return[];
+     }
+   }
+   const obtenerRegistroOperador = () =>
+   {
+    var datosOperador = localStorage.getItem("formOperador")
+    if(datosOperador)
+    {
+      return JSON.parse(datosOperador);
+      
+        } else{
+          return[];
+      }
+    }
+ 
+   const[formEmpresa, setFormEmpresa] = useState(obtenerRegistroEmpresa)
    const handleChangeEmpresa = (e) =>
    {
     setFormEmpresa(
@@ -12,7 +56,7 @@ export const CrearUsuarios = (onUsuarioCreado) =>
      
     });
    };
-   const[formRepresentante, setFormRepresentante] = useState({})
+   const[formRepresentante, setFormRepresentante] = useState(obtenerRegistroRepresentante)
    const handleChangeRepresentante = (e) =>
    {
     setFormRepresentante(
@@ -22,7 +66,7 @@ export const CrearUsuarios = (onUsuarioCreado) =>
     
     });
    };
-   const[formEspecialista, setFormEspecialista] = useState({})
+   const[formEspecialista, setFormEspecialista] = useState(obtenerRegistroEspecialista)
    const handleChangeEspecialista = (e) =>
    {
     setFormEspecialista(
@@ -32,7 +76,7 @@ export const CrearUsuarios = (onUsuarioCreado) =>
     
     });
    };
-   const[formOperador, setFormOperador]= useState({})
+   const[formOperador, setFormOperador]= useState(obtenerRegistroOperador)
    const handleChangeOperador = (e) =>
    {
     setFormOperador(
@@ -42,13 +86,59 @@ export const CrearUsuarios = (onUsuarioCreado) =>
     
     });
    };
+   const GuardarEmpresa = (e) =>
+   {
+    e.preventDefault();
+    var DataEmpresa = {nombreCompañia, razonSocial, nit, actividadComercial}
+    setFormEmpresa [formEmpresa, DataEmpresa]
+    limpiarFormularioEmpresa();
+   }
+   const limpiarFormularioEmpresa = () =>
+     {
+      setFormEmpresa("")
+     } 
+   const GuardarRepresentante = (e) =>
+   {
+    e.preventDefault();
+    var DataRepresentante= {nombreRepresentante, tipoDocumento, numeroDocumento, numeroContacto, correoEmpresarial}
+    setFormRepresentante[formRepresentante, DataRepresentante]
+    limpiarFormularioRepresentante();
+   }
+   const limpiarFormularioRepresentante = () =>
+   {
+    setFormRepresentante("")
+   } 
+   const GuardarEspecialista = (e) =>
+   {
+    e.preventDefault();
+    var DataEspecialista= {nombreEspecialista,tipoEspecialista, tipoDocumento, numeroDocumentoEspecialista, valorSalarialEspecialista}
+    setFormEspecialista[formEspecialista, DataEspecialista]
+    limpiarFormularioEspecialista();
+   }
+   
+   const limpiarFormularioEspecialista = () =>
+   {
+    setFormEspecialista("")
+   } 
+   const GuardarOperador = (e) =>
+   {
+    e.preventDefault();
+    var DataOperador= {nombreOperador,tipoOperador, tipoDocumentoOperador, numeroDocumentoOperador, valorSalarialOperador}
+    setFormOperador[formOperador, DataOperador]
+    limpiarFormularioOperador();
+   }
+   const limpiarFormularioOperador = () =>
+   {
+    setFormOperador("")
+   } 
     const handleSubmit = (e) => {
         e.preventDefault();
         alert("El Usuario ha sido creado")
-        onUsuarioCreado(formData);
+        onUsuarioCreado(formDataEmpresa,formDataEspecialista,formDataRepresentante,formDataOperador);
       };
-      
-       
+     
+    
+    
       
     return(
         <div className="contenedor-formulario">
@@ -80,7 +170,7 @@ export const CrearUsuarios = (onUsuarioCreado) =>
           <div className="nit">
             <label htmlFor="nit">Nit:</label>
             <input
-              type="text"
+              type="number"
               id="nit"
               value={formEmpresa.nit}
               onChange={handleChangeEmpresa}
@@ -97,6 +187,7 @@ export const CrearUsuarios = (onUsuarioCreado) =>
               required
             />
           </div>
+          <button className="boton-guardar-empresa" type="submit"onClick={GuardarEmpresa }>Guardar Empresa</button>
         </form>
         </div>
         <div className="formulario-representante">
@@ -106,8 +197,8 @@ export const CrearUsuarios = (onUsuarioCreado) =>
             <label htmlFor="nombre">Nombre:</label>
             <input
               type="text"
-              id="nombre"
-              value={formRepresentante.nombre}
+              id="nombreRepresentante"
+              value={formRepresentante.nombreRepresentante}
               onChange={handleChangeRepresentante}
               required
             />
@@ -130,7 +221,7 @@ export const CrearUsuarios = (onUsuarioCreado) =>
           <div className="cedeula-representante">
             <label htmlFor="numeroDocumento">Número de Documento:</label>
             <input
-              type="text"
+              type="number"
               id="numeroDocumento"
               value={formRepresentante.numeroDocumento}
               onChange={handleChangeRepresentante}
@@ -140,7 +231,7 @@ export const CrearUsuarios = (onUsuarioCreado) =>
           <div className="numero-contacto">
             <label htmlFor="numeroContacto">Número de Contacto:</label>
             <input
-              type="text"
+              type="number"
               id="numeroContacto"
               value={formRepresentante.numeroContacto}
               onChange={handleChangeRepresentante}
@@ -157,6 +248,7 @@ export const CrearUsuarios = (onUsuarioCreado) =>
               required
             />
           </div>
+          <button className="boton-guardar-representante" type="submit"onClick={GuardarRepresentante }>Guardar Representante</button>
         </form>
         </div>
         <div className="formulario-especialista">
@@ -201,7 +293,7 @@ export const CrearUsuarios = (onUsuarioCreado) =>
           <div className="numero-documento-especialista"> 
             <label htmlFor="numeroDocumentoEspecialista">N° de Documento:</label>
             <input
-              type="text"
+              type="number"
               id="numeroDocumentoEspecialista"
               value={formEspecialista.numeroDocumentoEspecialista}
               onChange={handleChangeEspecialista}
@@ -211,13 +303,15 @@ export const CrearUsuarios = (onUsuarioCreado) =>
           <div className="valor-salarial">
             <label htmlFor="valorSalarial">Valor Salarial x Hora:</label>
             <input
-              type="text"
-              id="valorSalarial"
-              value={formEspecialista.valorSalarial}
+              type="number"
+              id="valorSalarialEspecialista"
+              value={formEspecialista.valorSalarialEspecialista}
               onChange={handleChangeEspecialista}
               required
             />
           </div>
+          <button className="boton-guardar-especialista" type="submit"onClick={GuardarEspecialista}>Guardar Especialista
+          </button>
         </form>
         </div>
         <div className="formulario-operador"> 
@@ -234,7 +328,7 @@ export const CrearUsuarios = (onUsuarioCreado) =>
             />
           </div>
           <div className="tipo-operador"> 
-            <label htmlFor="tipoOperador">Tipo de Especialista:</label>
+            <label htmlFor="tipoOperador">Tipo de Operador:</label>
             <input
             text="text"
               id="tipoOperador"
@@ -262,7 +356,7 @@ export const CrearUsuarios = (onUsuarioCreado) =>
           <div className="numero-documento-operador"> , 
             <label htmlFor="numeroDocumentoOperador">N° de Documento:</label>
             <input
-              type="text"
+              type="number"
               id="numeroDocumentoOperador"
               value={formOperador.numeroDocumentoOperador}
               onChange={handleChangeOperador}
@@ -272,13 +366,14 @@ export const CrearUsuarios = (onUsuarioCreado) =>
           <div className="valor-salarial-operador"> , 
             <label htmlFor="valorSalarialOperador">Valor Salarial x Hora:</label>
             <input
-              type="text"
+              type="number"
               id="valorSalarialOperador"
               value={formOperador.valorSalarialOperador}
               onChange={handleChangeOperador}
               required
             />
           </div>
+          <button className="boton-guardar-operador" type="submit"onClick={GuardarOperador}>Guardar Operador</button>
         </form>
         </div>
         <button className="boton-guardar" type="submit"onClick={handleSubmit }>Guardar Usuario</button>

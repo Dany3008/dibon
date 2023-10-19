@@ -1,106 +1,36 @@
 import React, {useState} from "react";
-import CrearUsuarios from "../Auth/CrearUsuarios";
+import ListadoEmpresa from "./ListadoEmpresa";
+import ListadoRepresentante from "./ListadoRepresentante";
+import ListadoEspecialista from "./ListadoEspecialista";
+import ListadoOperador from "./ListadoOperador";
 export const ListadoUsuarios = () =>
 {
-    const [tableDataEmpresa, setTableDataEmpresa] = useState([]);
+    const [activeTablaUsuarios, setActiveTablaUsuarios] = useState(<ListadoEmpresa/>); 
 
-    const handleUsuarioCreado = (formData) => {
-        // Agregar formData a la tabla en ListadoUsuarios
-        setTableDataEmpresa([...tableDataEmpresa, formData]);
-
-  return (
-    <div>
-      <h2>Lista de Usuarios</h2>
-      <CrearUsuarios onUsuarioCreado={handleUsuarioCreado}/>
-      <h3>Informacion de la Empresa</h3>
-      <table>
-        <thead>
-            <tr>
-                <th>Nombre</th>
-                <th>Razon Social</th>
-                <th>Nit</th>
-                <th>Actividad Comercial</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr>
-
-            </tr>
-        </tbody>
-      </table>
-      <h3>Informacion del Representante Legal</h3>
-      <table>
-        <thead>
-            <tr>
-                <th>Nombre</th>
-                <th>Tipo de Documento</th>
-                <th>N° de Documento</th>
-                <th>N° de Contacto</th>
-                <th>Correo Empresarial</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr>
-
-            </tr>
-        </tbody>
-      </table>
-      <h3>Informacion del Representante Legal</h3>
-      <table>
-        <thead>
-            <tr>
-                <th>Nombre</th>
-                <th>Tipo de Documento</th>
-                <th>N° de Documento</th>
-                <th>N° de Contacto</th>
-                <th>Correo Empresarial</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr>
-
-            </tr>
-        </tbody>
-      </table>
-      <h3>Informacion del Especialista</h3>
-      <table>
-        <thead>
-            <tr>
-                <th>Nombre</th>
-                <th>Tipo de Especialista</th>
-                <th>Tipo de Documento</th>
-                <th>N° de Documento</th>
-                <th>Valor Salarial x Hora</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr>
-
-            </tr>
-        </tbody>
-      </table>
-      <h3>Informacion del Operador</h3>
-      <table>
-        <thead>
-            <tr>
-                <th>Nombre</th>
-                <th>Tipo de Operador</th>
-                <th>Tipo de Documento</th>
-                <th>N° de Documento</th>
-                <th>Valor Salarial x Hora</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr>
-
-            </tr>
-        </tbody>
-      </table>
-    </div>
-  );
+    const handleTabClick = (tablaUsuarios) => {
+      setActiveTablaUsuarios(tablaUsuarios);
+    };
+  
+    return (
+      <div>
+        <div className="tab-options">
+          <button onClick={() => handleTabClick(<ListadoEmpresa/>)}>Empresas</button>
+          <button onClick={() => handleTabClick(<ListadoRepresentante/>)}>Representante Legal</button>
+          <button onClick={() => handleTabClick(<ListadoEspecialista/>)}>Especialista</button>
+          <button onClick={() => handleTabClick(<ListadoOperador/>)}>Operador</button>
+        </div>
+  
+        <div className="tab-content">
+          {tablaUsuarios === <ListadoEmpresa/> && <p>Informacion de la Empresa</p>}
+          {tablaUsuarios === <ListadoRepresentante/> && <p>Informacion del Representante Legal</p>}
+          {tablaUsuarios === <ListadoEspecialista/> && <p>Contenido del Especialista</p>}
+          {tablaUsuarios === <ListadoOperador/> && <p>Contenido del Operador</p>}
+        </div>
+      </div>
+    );
+ 
+  
   }
-}
-
 
 
 

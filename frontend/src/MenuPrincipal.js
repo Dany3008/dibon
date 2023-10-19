@@ -1,6 +1,5 @@
 import React from "react";
 import {NavLink } from "react-router-dom";
-import {PaginaPrincipal} from './PaginaPrincipal'
 import {GestionUsuarios} from './components/Usuarios/GestionUsuarios'
 
 
@@ -21,7 +20,7 @@ export const MenuPrincipal=(props)=>
             <div className="opciones-menu">
             <ul>
                 <li>
-                    <NavLink To="./GestionUsuarios.js" className={"navlink"}>Gestion de Usuario</NavLink>
+                    <button onClick={<GestionUsuarios/>}>Gestion de Usuarios</button>
                 </li>
                 <li>
                 <NavLink To=""className={"navlink"}>Manuales</NavLink>

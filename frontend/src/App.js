@@ -5,6 +5,7 @@ import PaginaPrincipal from "./PaginaPrincipal";
 import MenuPrincipal from "./MenuPrincipal";
 import GestionUsuarios from "./components/Usuarios/GestionUsuarios";
 import CrearUsuarios from "./components/Auth/CrearUsuarios";
+import ListadoUsuarios from "./components/Usuarios/ListadoUsuarios";
 
 function App() {
   return (
@@ -17,6 +18,7 @@ function App() {
         <Route exact path="/" element={<MenuPrincipal/>}/>
         <Route exact path="" element={<GestionUsuarios/>}/>
         <Route exact path="/" element={<CrearUsuarios/>}/>
+        <Route exact path="/" element={<ListadoUsuarios/>}/>
       </Routes>
       </BrowserRouter>
     </div>
@@ -24,8 +26,6 @@ function App() {
 }
 
 export default App;
-
-
 
 
 
