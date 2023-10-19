@@ -1,37 +1,23 @@
-import React, {useState} from "react";
-import {NavLink } from "react-router-dom";
+import React, {} from "react";
 import {CrearUsuarios} from '../Auth/CrearUsuarios'
 import {ListadoUsuarios} from './ListadoUsuarios'
 
-export const GestionUsuarios=(props)=>
+export const GestionUsuarios=()=>
 {
-    const[reg, setReg] = useState("");
-    const[lis, setLis] = useState("");
     
-    function op_registrar()
-    {
-        setReg("1");
-        setLis("0")
-    }
-    function op_listar()
-    {
-        setReg("0");
-        setLis("1")
-    }
     return(
         <div className="contenedor-funciones">
             
             <ul>
                 <li>
-                    <NavLink To="./CrearUsuarios.js"className={"navlink text-style"} onClick={op_registrar} >Crear Usuario</NavLink>
+                    <button onClick={<CrearUsuarios/>}>Crear Usuarios</button>
                 </li>
                 <li>
-                <NavLink To="./ListadoUsuarios.js"className={"navlink text-style"} onClick={op_listar}>Lista de Usuarios</NavLink>
+                <button onClick={<ListadoUsuarios/>}>Lista de Usuarios</button>
                 </li>
                
             </ul>
-            {reg === "1" && <CrearUsuarios/>}
-            {lis === "1" && <ListadoUsuarios/>}
+          
             </div>
 
     )
