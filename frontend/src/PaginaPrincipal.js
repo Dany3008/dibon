@@ -1,5 +1,4 @@
 import React from "react";
-import { NavLink } from "react-router-dom";
 import MenuPrincipal from "./MenuPrincipal";
 
 export const PaginaPrincipal=(props)=>
@@ -10,7 +9,7 @@ export const PaginaPrincipal=(props)=>
         <div className="capa">
             <div className="contenedor-header">
                 <div className="menu-principal">
-            <NavLink to="./MenuPrincipal.js>"className="nav-link text-menu">Menu Principal</NavLink>
+            <button onClick={<MenuPrincipal/>}>Menu Principal</button>
             </div>
             <div className="logo">
                 <img src="../imagenes/logo.png"></img>
