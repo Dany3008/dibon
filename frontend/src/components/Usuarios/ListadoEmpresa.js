@@ -1,35 +1,30 @@
 import React, {useState} from "react";
-import CrearUsuarios from "../Auth/CrearUsuarios";
-export const ListadoEmpresa = (formEmpresa) =>
+import CrearEmpresa from "./CrearEmpresa";
+export const ListadoEmpresa = (registroEmpresa) =>
 {
-  const[formEmpresa, setFormEmpresa] = useState(obtenerRegistroEmpresa)
-  const handleChangeEmpresa = (e) =>
-  {
-   setFormEmpresa(
-     {
-     ...formEmpresa, [e.target.name]:e.target.value,
-    
-   });
+  const obtenerRegistroEmpresa = () => {
+    const dataEmpresa = localStorage.getItem('registroEmpresa');
+    if (dataEmpresa) {
+      return JSON.parse(dataEmpresa);
+    } else {
+      return [];
+    }
   };
-
-    const obtenerRegistroEmpresa = () =>
-    {
-     var datosEmpresa = localStorage.getItem("formEmpresa")
-     if(datosEmpresa)
-     {
-       return JSON.parse(datosEmpresa);
-       
-         } else{
-           return[];
-       }
-     }
-       
+  
+  const [registroEmpresa, setRegistroEmpresa] = useState(obtenerRegistroEmpresa);
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setRegistroEmpresa({
+      ...registroEmpresa,
+      [name]: value,
+    });
+  };
     
-
+    
   return (
     <div>
       <h2>Informacion de la Empresa</h2>
-      <CrearUsuarios onUsuarioCreado={handleChangeEmpresa}/>
+      <CrearEmpresa onUsuarioCreado={handleChange}/>
  
       <h3>Informacion de la Empresa</h3>
       <table>
@@ -39,17 +34,23 @@ export const ListadoEmpresa = (formEmpresa) =>
                 <th>Razon Social</th>
                 <th>Nit</th>
                 <th>Actividad Comercial</th>
+                <th>Representante Legal</th>
+                <th>Tipo de Documento</th>  ,
+                <th>Numero de Documento</th>
             </tr>
         </thead>
         <tbody>
             {
-              formEmpresa.map((x,index) =>(
+              registroEmpresa.map((x,index) =>(
                 <tr key={index}>
                  <th>{index+1}</th>
                  <td>{x.nombreCompañia}</td> , , 
                  <td>{x.razonSocial}</td>
                  <td>{x.nit}</td>
                  <td>{x.actividadComercial}</td>
+                 <td>{x.representanteLegal}</td>
+                <td>{x.tipoDocumento}</td> , , 
+               <td>{x.numeroDocumento}</td>
                 </tr>
               ))
             }
