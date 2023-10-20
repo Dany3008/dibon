@@ -1,7 +1,7 @@
 import React, {} from "react";
-import {CrearUsuarios} from '../Auth/CrearUsuarios'
-import {ListadoUsuarios} from './ListadoUsuarios'
-
+import {CrearUsuario} from './CrearUsuario'
+import {CrearEmpresa} from './CrearEmpresa'
+import {Listado} from './Listado'
 export const GestionUsuarios=()=>
 {
     
@@ -10,10 +10,13 @@ export const GestionUsuarios=()=>
             
             <ul>
                 <li>
-                    <button onClick={<CrearUsuarios/>}>Crear Usuarios</button>
+                    <button onClick={<CrearUsuario/>}></button>
                 </li>
                 <li>
-                <button onClick={<ListadoUsuarios/>}>Lista de Usuarios</button>
+                    <button onClick={<CrearEmpresa/>}>Crear Empresa</button>
+                </li>
+                <li>
+                <button onClick={<Listado/>}>Lista de Usuarios</button>
                 </li>
                
             </ul>
