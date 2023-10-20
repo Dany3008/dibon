@@ -1,11 +1,12 @@
 import React from "react";
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import Login from './components/Auth/Login';
+import Login from './components/Usuarios/Login';
 import PaginaPrincipal from "./PaginaPrincipal";
 import MenuPrincipal from "./MenuPrincipal";
 import GestionUsuarios from "./components/Usuarios/GestionUsuarios";
-import CrearUsuarios from "./components/Auth/CrearUsuarios";
-import ListadoUsuarios from "./components/Usuarios/ListadoUsuarios";
+import CrearEmpresa from "./components/Usuarios/CrearEmpresa";
+import CrearUsuario from "./components/Usuarios/CrearUsuario";
+import Listado from "./components/Usuarios/Listado";
 
 function App() {
   return (
@@ -17,8 +18,9 @@ function App() {
         <Route exact path="/" element={<PaginaPrincipal/>}/>
         <Route exact path="/" element={<MenuPrincipal/>}/>
         <Route exact path="" element={<GestionUsuarios/>}/>
-        <Route exact path="/" element={<CrearUsuarios/>}/>
-        <Route exact path="/" element={<ListadoUsuarios/>}/>
+        <Route exact path="/" element={<CrearUsuario/>}/>
+        <Route exact path="/" element={<CrearEmpresa/>}/>
+        <Route exact path="/" element={<Listado/>}/>
       </Routes>
       </BrowserRouter>
     </div>
@@ -26,6 +28,11 @@ function App() {
 }
 
 export default App;
+
+
+
+
+
 
 
 
