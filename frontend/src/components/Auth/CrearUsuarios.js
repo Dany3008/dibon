@@ -127,7 +127,7 @@ export const CrearUsuarios = (onUsuarioCreado) =>
               <option value="Carnet de Extranjería">Carnet de Extranjería</option>
             </select>
           </div>
-          <div className="cedeula-representante">
+          <div className="cedula-representante">
             <label htmlFor="numeroDocumento">Número de Documento:</label>
             <input
               type="text"
